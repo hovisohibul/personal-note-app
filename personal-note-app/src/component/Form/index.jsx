@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {BiReset} from 'react-icons/bi'
 
 function Form({data, filter, setFilter, setData}) {
@@ -52,6 +52,7 @@ function Form({data, filter, setFilter, setData}) {
             body: '',
             bodyLength: 0
         })
+        console.log(`Cek: ${data}, Cek2: ${filter}`)
     }
 
     return (

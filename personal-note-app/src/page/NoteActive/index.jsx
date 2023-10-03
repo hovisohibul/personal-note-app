@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Card from '../../component/Card'
 
 function NoteActive({data, filter, input, setData, setFilter}) {
@@ -9,13 +9,7 @@ function NoteActive({data, filter, input, setData, setFilter}) {
     }
 
     const handleData = (noteId) => {
-        const dataNote = filter.map(item => {
-            if(item.id === noteId && noteId !== undefined){
-                return item
-            }else{
-                return null
-            }
-        })
+        const dataNote = data.find(item => item.id === noteId)
         setData([
             ...data.filter(item => item.id !== noteId),
             {

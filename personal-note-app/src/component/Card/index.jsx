@@ -3,21 +3,21 @@ import {BsTrashFill} from 'react-icons/bs'
 import {BiArchiveIn, BiArchiveOut} from 'react-icons/bi'
 import { showFormatDate } from '../../utils'
 
+const DeleteButton = ({idButton ,handleDelete}) => {
+    return <BsTrashFill size={26} className='text-red-600 cursor-pointer' onClick={() => handleDelete(idButton)}/>
+}
+
+const ArchieveButton = ({idButton, handleData}) => {
+    return <BiArchiveIn size={26} className='text-blue-600 cursor-pointer' onClick={() => handleData(idButton)}/>
+}
+
+const MoveButton = ({idButton, handleData}) => {
+    return <BiArchiveOut size={26} className='text-blue-600 cursor-pointer' onClick={() => handleData(idButton)}/>
+}
+
 function Card({data, handleDelete, handleData}) {
 
     const {id, title, body, createdAt, archived} = data
-
-    const DeleteButton = () => {
-        return <BsTrashFill size={26} className='text-red-600 cursor-pointer' onClick={() => handleDelete(id)}/>
-    }
-
-    const ArchieveButton = () => {
-        return <BiArchiveIn size={26} className='text-blue-600 cursor-pointer' onClick={() => handleData(id)}/>
-    }
-
-    const MoveButton = () => {
-        return <BiArchiveOut size={26} className='text-blue-600' onClick={() => handleData(id)}/>
-    }
 
     return (
         <>
@@ -32,8 +32,8 @@ function Card({data, handleDelete, handleData}) {
                     </div>
                 </div>
                 <div className='flex justify-end items-end gap-2 h-full'>
-                    <DeleteButton/>
-                    {archived === false ? <ArchieveButton/> : <MoveButton/>}
+                    <DeleteButton idButton={id} handleDelete={handleDelete}/>
+                    {archived === false ? <ArchieveButton idButton={id} handleData={handleData}/> : <MoveButton idButton={id} handleData={handleData}/>}
                 </div>
             </div>
         </>

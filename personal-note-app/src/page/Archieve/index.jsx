@@ -4,20 +4,14 @@ import Card from '../../component/Card'
 function Archieve({data, filter, setData, setFilter}) {
 
     const handleDelete = (id) => {
-        const deleteData = data.filter(item => item.id !== id)
+        const deleteData = filter.filter(item => item.id !== id)
         setData(deleteData)
     }
 
     const handleData = (noteId) => {
-        const dataNote = filter.map(item => {
-            if(item.id === noteId && noteId !== undefined){
-                return item
-            }else{
-                return null
-            }
-        })
+        const dataNote = filter.find(item => item.id === noteId)
         setData([
-            ...data.filter(item => item.id !== noteId),
+            ...filter.filter(item => item.id !== noteId),
             {
                 ...dataNote, 
                 archived: !dataNote.archived
